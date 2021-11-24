@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import EditItem from "./EditItem";
 
 class GeneralInfo extends Component {
     constructor() {
@@ -11,8 +12,12 @@ class GeneralInfo extends Component {
         }
     };
 
-    onClick = (e) => {
-        
+    onChangeInfo = (newInfo) => {
+        this.setState({
+            name: newInfo.name.name,
+            phone: newInfo.phone.phone,
+            email: newInfo.email.email,
+        })
     };
 
     render() {
@@ -23,9 +28,15 @@ class GeneralInfo extends Component {
                 <h2 className="myName">{name}</h2>
                 <p className="myPhone">{phone}</p>
                 <p className="myEmail">{email}</p>
+                < EditItem 
+                    changeInfo = {this.onChangeInfo.bind(this)}
+                    name = {name}
+                    phone = {phone}
+                    email = {email}
+                />
             </div>
         );
     };
 }
 
-export default GeneralInfo;
+export default GeneralInfo;     

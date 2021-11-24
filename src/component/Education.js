@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import EditItem from "./EditItem";
 
 class Education extends Component {
     constructor() {
@@ -7,9 +8,18 @@ class Education extends Component {
         this.state = {
             schoolName: 'University of Washington Tacoma',
             gradYear: '2020 June',
-            degree: 'Bachlor of Science',
-            marjor: 'Computer Science',
+            degree: 'Bachlor Degree (BS)',
+            major: 'Computer Science',
         }
+    }
+
+    onChangeInfo = (newInfo) => {
+        this.setState({
+            schoolName: newInfo.schoolName.schoolName,
+            gradYear: newInfo.gradYear.gradYear,
+            degree: newInfo.degree.degree,
+            major: newInfo.major.major,
+        })
     }
 
     render() {
@@ -22,6 +32,13 @@ class Education extends Component {
                 <p className="gradYear">{gradYear}</p>
                 <p className="degree">{degree}</p>
                 <p className="major">{major}</p>
+                <EditItem
+                    changeInfo = {this.onChangeInfo.bind(this)}
+                    schoolName = {schoolName}
+                    gradYear = {gradYear}
+                    degree = {degree}
+                    major = {major}
+                />
             </div>
         );
     };

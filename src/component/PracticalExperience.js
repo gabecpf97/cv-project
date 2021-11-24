@@ -16,11 +16,6 @@ class PracticalExperience extends Component {
     }
 
     render() {
-        // this.state.experiences.concat({
-        //     name: 'Peer Facilitator',
-        //     description: 'Each week organize and explain course materials that helps student achieve more in the course',
-        //     duration: 'Sep 2018 - Dec 2018',
-        // });
         return (
             <div className="practical">
                 <h2  className="experience">Experience</h2>
