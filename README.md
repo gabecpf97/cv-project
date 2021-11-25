@@ -1,3 +1,7 @@
+# CV project
+
+This app is created using react for each component, which allow user to edit the detail in each section by clicking the button
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
