@@ -9,6 +9,7 @@ class GeneralInfo extends Component {
             name: 'PuiFai Chau',
             phone: '919 432-7272',
             email: 'gabrielcpf2997@gmail.com',
+            isVisiable: false,
         }
     };
 
@@ -17,23 +18,31 @@ class GeneralInfo extends Component {
             name: newInfo.name.name,
             phone: newInfo.phone.phone,
             email: newInfo.email.email,
+            isVisiable: !this.state.isVisiable,
         })
     };
 
+    showForm = () => {
+        this.setState({
+            isVisiable: !this.state.isVisiable,
+        });
+    }
+
     render() {
-        const {name, phone, email} = this.state;
+        const {name, phone, email, isVisiable} = this.state;
 
         return (
             <div className="general">
                 <h2 className="myName">{name}</h2>
                 <p className="myPhone">{phone}</p>
                 <p className="myEmail">{email}</p>
-                < EditItem 
+                <button onClick={this.showForm}>Edit this</button>
+                {isVisiable && < EditItem 
                     changeInfo = {this.onChangeInfo.bind(this)}
                     name = {name}
                     phone = {phone}
                     email = {email}
-                />
+                />}
             </div>
         );
     };

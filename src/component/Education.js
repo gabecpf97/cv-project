@@ -10,6 +10,7 @@ class Education extends Component {
             gradYear: '2020 June',
             degree: 'Bachlor Degree (BS)',
             major: 'Computer Science',
+            isVisiable: false,
         }
     }
 
@@ -19,11 +20,18 @@ class Education extends Component {
             gradYear: newInfo.gradYear.gradYear,
             degree: newInfo.degree.degree,
             major: newInfo.major.major,
+            isVisiable: !this.state.isVisiable,
         })
     }
 
+    showForm = () => {
+        this.setState({
+            isVisiable: !this.state.isVisiable,
+        });
+    }
+
     render() {
-        const {schoolName, gradYear, degree, major} = this.state;
+        const {schoolName, gradYear, degree, major, isVisiable} = this.state;
 
         return (
             <div className="education_div">
@@ -32,13 +40,14 @@ class Education extends Component {
                 <p className="gradYear">{gradYear}</p>
                 <p className="degree">{degree}</p>
                 <p className="major">{major}</p>
-                <EditItem
+                <button onClick={this.showForm}>Edit this</button>
+                {isVisiable && < EditItem 
                     changeInfo = {this.onChangeInfo.bind(this)}
                     schoolName = {schoolName}
                     gradYear = {gradYear}
                     degree = {degree}
                     major = {major}
-                />
+                />}
             </div>
         );
     };

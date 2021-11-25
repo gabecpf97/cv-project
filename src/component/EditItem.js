@@ -21,9 +21,9 @@ class EditItem extends Component {
         return temp;
     }
 
-    onChangeInfo = () => {
+    onChangeInfo = (e) => {
+        e.preventDefault();
         this.props.changeInfo(this.state);
-        
     }
 
     onHandleChange = (e, propName) => {
@@ -37,14 +37,14 @@ class EditItem extends Component {
 
     render() {
         return (
-            <div className="edit">
+            <form className="edit">
                 { 
                     Object.keys(this.props)
                     .filter((key, i) => key !== 'changeInfo')
                     .map((key, i) => this._makeInputs(key, this.state[key][key]))
                 }
-                <button onClick={this.onChangeInfo}>Edit this</button>
-            </div>
+                <button onClick={this.onChangeInfo}>Save</button>
+            </form>
         );
     }
 
