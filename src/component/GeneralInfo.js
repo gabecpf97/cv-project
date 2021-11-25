@@ -10,6 +10,7 @@ class GeneralInfo extends Component {
             phone: '919 432-7272',
             email: 'gabrielcpf2997@gmail.com',
             isVisiable: false,
+            butt_text: 'Edit this',
         }
     };
 
@@ -19,24 +20,38 @@ class GeneralInfo extends Component {
             phone: newInfo.phone.phone,
             email: newInfo.email.email,
             isVisiable: !this.state.isVisiable,
+            butt_text: (this.state.butt_text === 'Cancel') ? 'Edit this' : 'Cancel',
         })
     };
 
     showForm = () => {
         this.setState({
             isVisiable: !this.state.isVisiable,
+            butt_text: (this.state.butt_text === 'Cancel') ? 'Edit this' : 'Cancel',
         });
     }
 
+    displayButtText = () => {
+        if (this.state.isVisiable)
+            return "Cancel";
+        else 
+            return "Edit this";
+    }
+
     render() {
-        const {name, phone, email, isVisiable} = this.state;
+        const {name, phone, email, isVisiable, butt_text} = this.state;
 
         return (
             <div className="general">
-                <h2 className="myName">{name}</h2>
-                <p className="myPhone">{phone}</p>
-                <p className="myEmail">{email}</p>
-                <button onClick={this.showForm}>Edit this</button>
+                <h2 className="myName">{name}
+                    <span>
+                        <button className="butt" onClick={this.showForm}>{butt_text}</button>
+                    </span>
+                </h2>
+                <div className="contact">
+                    <p className="myPhone">{phone}</p>
+                    <p className="myEmail">{email}</p>
+                </div>
                 {isVisiable && < EditItem 
                     changeInfo = {this.onChangeInfo.bind(this)}
                     name = {name}

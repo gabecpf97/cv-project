@@ -1,0 +1,65 @@
+body {
+    background: antiquewhite;
+    margin: 10px;
+}
+
+ul {
+    list-style: none;
+}
+
+.butt {
+    float: right;
+}
+
+.myName {
+    text-align: center;
+    text-decoration: underline;
+    margin-bottom: 5px;
+}
+
+.contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.education_div {
+    padding: 10px 0px 10px 10px;
+    background: rgb(253, 225, 188);
+}
+
+.education {
+    margin: 0px;
+}
+
+.practical {
+    padding: 10px 0px 10px 10px;
+}
+
+.experience {
+    margin: 0px;
+}
+
+.job {
+    background: rgb(231, 197, 151);
+    padding: 5px;
+}
+
+.job p {
+    margin: 0px;
+    padding: 5px;
+}
+
+.edit {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 5px;
+    border: rebeccapurple solid;
+}
+
+.save_butt {
+    width: fit-content;
+}

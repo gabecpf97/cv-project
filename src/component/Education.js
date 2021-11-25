@@ -11,6 +11,7 @@ class Education extends Component {
             degree: 'Bachlor Degree (BS)',
             major: 'Computer Science',
             isVisiable: false,
+            butt_text: 'Edit this',
         }
     }
 
@@ -21,26 +22,31 @@ class Education extends Component {
             degree: newInfo.degree.degree,
             major: newInfo.major.major,
             isVisiable: !this.state.isVisiable,
+            butt_text: (this.state.butt_text === 'Cancel') ? 'Edit this' : 'Cancel',
         })
     }
 
     showForm = () => {
         this.setState({
             isVisiable: !this.state.isVisiable,
+            butt_text: (this.state.butt_text === 'Cancel') ? 'Edit this' : 'Cancel',
         });
     }
 
     render() {
-        const {schoolName, gradYear, degree, major, isVisiable} = this.state;
+        const {schoolName, gradYear, degree, major, isVisiable, butt_text} = this.state;
 
         return (
             <div className="education_div">
-                <h2 className="education">Education</h2>
+                <h2 className="education">Education
+                    <span>
+                        <button className="butt" onClick={this.showForm}>{butt_text}</button>
+                    </span>
+                </h2>
                 <p className="schoolName">{schoolName}</p>
                 <p className="gradYear">{gradYear}</p>
                 <p className="degree">{degree}</p>
                 <p className="major">{major}</p>
-                <button onClick={this.showForm}>Edit this</button>
                 {isVisiable && < EditItem 
                     changeInfo = {this.onChangeInfo.bind(this)}
                     schoolName = {schoolName}

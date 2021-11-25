@@ -43,7 +43,7 @@ class EditItem extends Component {
                     .filter((key, i) => key !== 'changeInfo')
                     .map((key, i) => this._makeInputs(key, this.state[key][key]))
                 }
-                <button onClick={this.onChangeInfo}>Save</button>
+                <button className="save_butt" onClick={this.onChangeInfo}>Save</button>
             </form>
         );
     }

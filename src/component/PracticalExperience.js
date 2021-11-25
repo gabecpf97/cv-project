@@ -13,6 +13,7 @@ class PracticalExperience extends Component {
                 duration: 'Sep 2018 - Dec 2018',
                 exp_id: uniqid(),
                 isVisiable: false,
+                butt_text: 'Edit this',
             }],
         }
     }
@@ -24,7 +25,8 @@ class PracticalExperience extends Component {
                 description: newInfo.description.description,
                 duration: newInfo.duration.duration,
                 exp_id: this.state.experiences[0].exp_id,
-                isVisiable: !this.state.experiences[0].isVisiable
+                isVisiable: !this.state.experiences[0].isVisiable,
+                butt_text: (this.state.experiences[0].butt_text === 'Cancel') ? 'Edit this' : 'Cancel',
             }],
         });
     }
@@ -36,7 +38,8 @@ class PracticalExperience extends Component {
                 description: this.state.experiences[0].description,
                 duration: this.state.experiences[0].duration,
                 exp_id: this.state.experiences[0].exp_id,
-                isVisiable: !this.state.experiences[0].isVisiable
+                isVisiable: !this.state.experiences[0].isVisiable,
+                butt_text: (this.state.experiences[0].butt_text === 'Cancel') ? 'Edit this' : 'Cancel',
             }],
         });
     }
@@ -47,13 +50,16 @@ class PracticalExperience extends Component {
                 <h2  className="experience">Experience</h2>
                 <ul>
                     {this.state.experiences.map((experience) => {
-                        const {name, description, duration, exp_id, isVisiable} = experience;
+                        const {name, description, duration, exp_id, isVisiable, butt_text} = experience;
                         return (
                             <li className="job" key={exp_id}>
-                                <p className="jobName">{name}</p>
+                                <p className="jobName">{name}
+                                    <span>
+                                        <button className="butt" onClick={this.showForm}>{butt_text}</button>
+                                    </span>
+                                </p>
                                 <p className="description">{description}</p>
                                 <p className="duration">{duration}</p>
-                                <button onClick={this.showForm}>Edit this</button>
                                 {isVisiable && < EditItem 
                                     changeInfo = {this.onChangeInfo.bind(this)}
                                     name = {name}
