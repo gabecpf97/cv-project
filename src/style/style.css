@@ -44,6 +44,8 @@ ul {
 .job {
     background: rgb(231, 197, 151);
     padding: 5px;
+    border: darkgray solid;
+    margin-bottom: 2px;
 }
 
 .job p {

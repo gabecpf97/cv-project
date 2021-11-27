@@ -1,66 +1,45 @@
-import React, {Component} from "react";
+import React, {useState} from "react";
 import EditItem from "./EditItem";
 
-class GeneralInfo extends Component {
-    constructor() {
-        super();
+const GeneralInfo = () => {
+    const [name, setName] = useState('Your Name');
+    const [phone, setPhone] = useState('Your Phone number');
+    const [email, setEmail] = useState('Your Email');
+    const [visiable, setVisiable] = useState(false);
+    const [buttText, setButtText] = useState('Edit this');
 
-        this.state = {
-            name: 'PuiFai Chau',
-            phone: '919 432-7272',
-            email: 'gabrielcpf2997@gmail.com',
-            isVisiable: false,
-            butt_text: 'Edit this',
-        }
-    };
-
-    onChangeInfo = (newInfo) => {
-        this.setState({
-            name: newInfo.name.name,
-            phone: newInfo.phone.phone,
-            email: newInfo.email.email,
-            isVisiable: !this.state.isVisiable,
-            butt_text: (this.state.butt_text === 'Cancel') ? 'Edit this' : 'Cancel',
-        })
-    };
-
-    showForm = () => {
-        this.setState({
-            isVisiable: !this.state.isVisiable,
-            butt_text: (this.state.butt_text === 'Cancel') ? 'Edit this' : 'Cancel',
-        });
+    function showForm() {
+        setVisiable(!visiable);
+        setButtText((buttText === 'Cancel') ? 'Edit this' : 'Cancel');
     }
 
-    displayButtText = () => {
-        if (this.state.isVisiable)
-            return "Cancel";
-        else 
-            return "Edit this";
+    const onChangeInfo = (newInfo) => {
+        setName(newInfo.name.name);
+        setPhone(newInfo.phone.phone);
+        setEmail(newInfo.email.email);
+        setVisiable(!visiable);
+        setButtText((buttText === 'Cancel') ? 'Edit this' : 'Cancel');
     }
 
-    render() {
-        const {name, phone, email, isVisiable, butt_text} = this.state;
-
-        return (
-            <div className="general">
-                <h2 className="myName">{name}
-                    <span>
-                        <button className="butt" onClick={this.showForm}>{butt_text}</button>
-                    </span>
-                </h2>
-                <div className="contact">
-                    <p className="myPhone">{phone}</p>
-                    <p className="myEmail">{email}</p>
-                </div>
-                {isVisiable && < EditItem 
-                    changeInfo = {this.onChangeInfo.bind(this)}
-                    name = {name}
-                    phone = {phone}
-                    email = {email}
-                />}
+    return (
+        <div className="general">
+            <h2 className="myName">{name}
+                <span>
+                    <button className="butt" onClick={showForm}>{buttText}</button>
+                </span>
+            </h2>
+            <div className="contact">
+                <p className="myPhone">{phone}</p>
+                <p className="myEmail">{email}</p>
             </div>
-        );
-    };
+            {visiable && < EditItem 
+                changeInfo = {onChangeInfo}
+                name = {name}
+                phone = {phone}
+                email = {email}
+            />}
+        </div>
+    )
 }
 
 export default GeneralInfo;     
